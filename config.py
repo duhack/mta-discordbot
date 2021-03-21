@@ -1,3 +1,7 @@
+#AUTHOR: duhack
+#GITHUB: https://github.com/duhack
+#WWW: https://duhack.pl/ 
+
 import yaml
 
 botOptions = ['token', 'prefix', 'name', 'adminrank', 'channel_member_count', 'channel_new_user', 'embed_color']
