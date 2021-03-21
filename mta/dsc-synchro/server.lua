@@ -4,13 +4,14 @@ GITHUB: https://github.com/duhack
 WWW: https://duhack.pl/ 
 ]]
 
+local elementdataUID = "uid" -- jakiej elementdaty używa serwer do UID
+
 ---BAZA DANYCH
 
-local host = ""
-local db = ""
-local user = ""
-local password = ""
-local elementdataUID = "uid"
+local host = "" -- host
+local db = "" -- baza danych
+local user = "" -- uzytkownik
+local password = "" --haslo
 
 function connect()
     DBConnection = dbConnect( "mysql", "dbname="..db..";host="..host..";charset=utf8", user, password )
