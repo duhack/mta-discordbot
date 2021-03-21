@@ -5,6 +5,7 @@ bot:
     adminrank: 123 #id rangi, którą posiada administracja
     channel_member_count: 123 #id kanału, który ma nosić nazwę z liczbą użytkowników
     channel_new_user: 123 #id kanału, który ma nosić nazwę z najnowszym użytkownikiem
+    embed_color: 0xb4e1ff #tutaj wpisz kolor, jaki mają posiadać wiadomości typu embed
 mta:
     ip: '149.202.65.66' #ip serwera mta
     port: 22003 #port serwera mta
