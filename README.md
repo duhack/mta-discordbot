@@ -9,13 +9,18 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
 - Pobierz pliki oraz wypakuj do jednego folderu.
 - Uzupełnij plik konfiguracyjny: ```config.yml```
 - Jeżeli nie masz, to zainstaluj Pythona
-- Zainstaluj następujące biblioteki:
-```bash
-pip install discord
-pip install PyYAML
-```
+- Zainstaluj biblioteki:
+  
+  [Pobierz oraz uruchom plik z PIP](https://bootstrap.pypa.io/get-pip.py)
+  
+  Następnie odpal konsolę ( cmd )
+  wpisuj po koleji:
+  ```bash
+  py -m pip install discord
+  py -m pip install PyYAML
+  ```
+  
 - Uruchom plik main.py
-- Korzystaj z bota ;)
 
 ## Ważne
 Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
@@ -26,4 +31,8 @@ Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
 
 ## TODO
 - Nadawanie rangi na discordzie, po synchronizacji konta z grą
+- Lista graczy w komendzie *status
 - ...
+
+## Licencja
+[MIT](https://choosealicense.com/licenses/mit/)
