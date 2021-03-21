@@ -1,5 +1,4 @@
 import discord
-import subprocess
 import statusAPI
 import config
 from statusAPI import checkSerwer
