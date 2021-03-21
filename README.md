@@ -33,3 +33,6 @@ Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
 - Nadawanie rangi na discordzie, po synchronizacji konta z grą
 - Lista graczy w komendzie *status
 - ...
+
+## Licencja
+[MIT](https://choosealicense.com/licenses/mit/)
