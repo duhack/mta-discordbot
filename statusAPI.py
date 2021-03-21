@@ -1,5 +1,8 @@
-import socket
+#AUTHOR: duhack
+#GITHUB: https://github.com/duhack
+#WWW: https://duhack.pl/ 
 
+import socket
 
 class checkSerwer:
     game = None
