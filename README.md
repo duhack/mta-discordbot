@@ -8,13 +8,14 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
 
 - Pobierz pliki oraz wypakuj do jednego folderu.
 - Uzupełnij plik konfiguracyjny: ```config.yml```
-- Uruchom plik main.py
-
-
-- Jeżeli będziesz miał problemy z uruchomieniem, to zainstaluj bibliotekę ```discord.py```:
+- Jeżeli nie masz, to zainstaluj Pythona
+- Zainstaluj następujące biblioteki:
 ```bash
-pip install discord.py
+pip install discord
+pip install PyYAML
 ```
+- Uruchom plik main.py
+- Korzystaj z bota ;)
 
 ## Ważne
 Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
