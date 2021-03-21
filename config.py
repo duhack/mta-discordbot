@@ -1,6 +1,6 @@
 import yaml
 
-botOptions = ['token', 'prefix', 'name', 'adminrank']
+botOptions = ['token', 'prefix', 'name', 'adminrank', 'channel_member_count', 'channel_new_user']
 mtaOptions = ['ip', 'port']
 
 def configCheck(data):
