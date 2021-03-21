@@ -22,3 +22,7 @@ Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
 - Na stronie discorda zaznacz mu następujące opcje:
 
 ![text](https://i.imgur.com/OImSYbM.png)
+
+## TODO
+- Nadawanie rangi na discordzie, po synchronizacji konta z grą
+- ...
