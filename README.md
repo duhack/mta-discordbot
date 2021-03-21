@@ -15,3 +15,10 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
 ```bash
 pip install discord.py
 ```
+
+## Ważne
+Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
+- Nadaj mu rangę ze wszystkimi uprawnieniami
+- Na stronie discorda zaznacz mu następujące opcje:
+
+![text](https://i.imgur.com/OImSYbM.png)
