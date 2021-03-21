@@ -1,3 +1,7 @@
+#AUTHOR: duhack
+#GITHUB: https://github.com/duhack
+#WWW: https://duhack.pl/ 
+
 import discord
 import statusAPI
 import config
