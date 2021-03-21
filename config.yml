@@ -1,0 +1,8 @@
+bot:
+    token: 'token_here'
+    prefix: '*'
+    name: 'botname'
+    adminrank: 123
+mta:
+    ip: '149.202.65.66'
+    port: 22003
