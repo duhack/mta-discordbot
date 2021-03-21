@@ -26,4 +26,5 @@ Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
 
 ## TODO
 - Nadawanie rangi na discordzie, po synchronizacji konta z grą
+- Lista graczy w komendzie *status
 - ...
