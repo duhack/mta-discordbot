@@ -28,11 +28,10 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        if member.guild.id == 800155538566414416:
-            channel1 = self.bot.get_channel(800157442260336652)
-            await channel1.edit(name="🎈 Jest nas: "+str(member.guild.member_count))
-            channel2 = self.bot.get_channel(800157512644296704)
-            await channel2.edit(name="🎈 Nowy: "+str(member.name))
+        channel1 = self.bot.get_channel(config.configCheck('channel_member_count'))
+        await channel1.edit(name="🎈 Jest nas: "+str(member.guild.member_count))
+        channel2 = self.bot.get_channel(config.configCheck('channel_new_user'))
+        await channel2.edit(name="🎈 Nowy: "+str(member.name))
 
 def setup(bot):
     bot.add_cog(events(bot))
