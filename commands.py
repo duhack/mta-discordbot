@@ -1,5 +1,4 @@
 import discord
-import requests
 import statusAPI
 import config
 from statusAPI import checkSerwer
