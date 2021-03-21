@@ -29,7 +29,7 @@ class Commands(commands.Cog):
         adminRank = get(ctx.author.guild.roles, id=config.configCheck('adminrank'))
         if adminRank in ctx.author.roles:
             if not(adminRank in user.roles):
-                embed = discord.Embed(title="BAN", description="Użytkownik "+user.display_name+" został zbanowany!", color=0x2333cc)
+                embed = discord.Embed(title="BAN", description="Użytkownik "+user.display_name+" został zbanowany!", color=config.configCheck('embed_color'))
                 embed.add_field(name="Powód: ", value=powod, inline=False)
                 embed.add_field(name="Banujący: ", value=ctx.author.display_name, inline=False)
                 avatar = user.avatar_url
@@ -38,7 +38,7 @@ class Commands(commands.Cog):
         
         
                 dm = await user.create_dm()
-                embed2 = discord.Embed(title="BAN", description="Zostałeś zbanowany!", color=0x2333cc)
+                embed2 = discord.Embed(title="BAN", description="Zostałeś zbanowany!", color=config.configCheck('embed_color'))
                 embed2.add_field(name="Powód: ", value=powod, inline=False)
                 embed2.add_field(name="Banujący: ", value=ctx.author.display_name, inline=False)
                 await dm.send(embed=embed2)
@@ -50,7 +50,7 @@ class Commands(commands.Cog):
         for i in await ctx.guild.invites():
             if i.inviter == ctx.author:
                 totalInvites += i.uses
-        embed = discord.Embed(title="Zaproszenia", description="Zaprosiłeś "+str(totalInvites)+" osób na discorda.", color=0x2333cc)
+        embed = discord.Embed(title="Zaproszenia", description="Zaprosiłeś "+str(totalInvites)+" osób na discorda.", color=config.configCheck('embed_color'))
         checkRank = []
         for rank in inviteRanks:
             if totalInvites >= rank[1]:
@@ -70,7 +70,7 @@ class Commands(commands.Cog):
 
     @commands.command()
     async def help(self, ctx):
-        embed = discord.Embed(title="POMOC", description="Lista dostępnych komend", color=0x3333cc)
+        embed = discord.Embed(title="POMOC", description="Lista dostępnych komend", color=config.configCheck('embed_color'))
         embed.add_field(name="*zaproszenia", value="Twoja aktualna ranga oraz liczba zaproszonych osób", inline=False)
         embed.add_field(name="*serwer", value="Informacje o tym serwerze", inline=False)
         embed.add_field(name="*status", value="Status serwera MTA", inline=False)
@@ -87,7 +87,7 @@ class Commands(commands.Cog):
                 offline.append(user)
         guild = ctx.author.guild
         description=guild.name+'\n:green_circle: Online: '+str(len(online))+'\n:red_circle: Offline: '+str(len(offline))+'\nRegion: '+str(guild.region)+'\nWłaściciel: '+guild.owner.display_name
-        embed = discord.Embed(title="Informacje Serwerowe", description=description, color=0x3333cc)
+        embed = discord.Embed(title="Informacje Serwerowe", description=description, color=config.configCheck('embed_color'))
         icon = guild.icon_url
         embed.set_thumbnail(url=icon)
         await ctx.send(embed=embed)
@@ -97,7 +97,7 @@ class Commands(commands.Cog):
     async def status(self, ctx):
         object = checkSerwer(ip, port)
         players = object.players+"/"+object.maxplayers
-        embed = discord.Embed(title=object.name, description="Informacje o serwerze:", color=0x3333cc)
+        embed = discord.Embed(title=object.name, description="Informacje o serwerze:", color=config.configCheck('embed_color'))
         embed.add_field(name="Online", value=players, inline=True)
         embed.add_field(name="Adres IP", value='mtasa://'+ip+':'+str(port), inline=True)
         await ctx.send(embed=embed)
