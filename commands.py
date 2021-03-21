@@ -1,12 +1,13 @@
 import discord
 import requests
 import statusAPI
+import config
 from statusAPI import checkSerwer
 from discord.ext import commands
 from discord.utils import get
 
-ip = '51.75.35.77'
-port = 20784
+ip = config.configCheck('ip')
+port = config.configCheck('port')
 
 inviteRanks = [
     #ranga, próg
@@ -24,10 +25,9 @@ class Commands(commands.Cog):
         self.bot = bot
         self.bot.remove_command('help')
 
-    adminRank = 803195219976781856
     @commands.command()
     async def ban(self, ctx, user: discord.Member, *, powod="Brak powodu"):
-        adminRank = get(ctx.author.guild.roles, id=803195219976781856)
+        adminRank = get(ctx.author.guild.roles, id=config.configCheck('adminrank'))
         if adminRank in ctx.author.roles:
             if not(adminRank in user.roles):
                 embed = discord.Embed(title="BAN", description="Użytkownik "+user.display_name+" został zbanowany!", color=0x2333cc)
@@ -75,7 +75,6 @@ class Commands(commands.Cog):
         embed.add_field(name="*zaproszenia", value="Twoja aktualna ranga oraz liczba zaproszonych osób", inline=False)
         embed.add_field(name="*serwer", value="Informacje o tym serwerze", inline=False)
         embed.add_field(name="*status", value="Status serwera MTA", inline=False)
-        embed.add_field(name="Autor", value="duhack")
         await ctx.send(embed=embed)
 
     @commands.command()
