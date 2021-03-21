@@ -14,6 +14,7 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
 - Jeżeli będziesz miał problemy z uruchomieniem, to zainstaluj bibliotekę ```discord.py```:
 ```bash
 pip install discord.py
+pip install PyYAML
 ```
 
 ## Ważne
