@@ -3,6 +3,8 @@ bot:
     prefix: '*'
     name: 'botname'
     adminrank: 123
+    channel_member_count: 823133435614199808
+    channel_new_user: 823133564505030667
 mta:
     ip: '149.202.65.66'
     port: 22003
