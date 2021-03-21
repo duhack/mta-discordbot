@@ -2,7 +2,7 @@
 
 Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z serwerami MTA, to udostępniam bota mojego autorstwa, który jest cały czas rozwijany.
 
-- Serwer testowy: [https://discord.gg/AqW2Jejp](https://discord.gg/AqW2Jejp)
+- Serwer testowy: [https://discord.gg/JjRy8W5gvS](https://discord.gg/JjRy8W5gvS)
 
 ## Instalacja
 
@@ -22,3 +22,7 @@ Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
 - Na stronie discorda zaznacz mu następujące opcje:
 
 ![text](https://i.imgur.com/OImSYbM.png)
+
+## TODO
+- Nadawanie rangi na discordzie, po synchronizacji konta z grą
+- ...
