@@ -86,6 +86,7 @@ class Commands(commands.Cog):
         embed.add_field(name="*zaproszenia", value="Twoja aktualna ranga oraz liczba zaproszonych osób", inline=False)
         embed.add_field(name="*serwer", value="Informacje o tym serwerze", inline=False)
         embed.add_field(name="*status", value="Status serwera MTA", inline=False)
+        embed.add_field(name="*synchronizacja <kod>", value="Połączenie konta discord, z grą", inline=False)
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -115,14 +116,17 @@ class Commands(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def synchronizacja(self, ctx, code):
+    async def synchronizacja(self, ctx, code = None):
+        embed = None
         if code is not None:
             connection = mysql.connector.connect(**configMysql)
             sql_select_Query = "select * from `synchronizacja-dsc` WHERE code='"+code+"'"
             cursor = connection.cursor()
             cursor.execute(sql_select_Query)
             records = cursor.fetchall()
+            znaleziono = False
             for row in records:
+                znaleziono = True
                 if str(row[2]) == "nie":
                     cursor.execute("select `nick` from players WHERE uid='"+str(row[0])+"'")
                     records_nick = cursor.fetchall()
@@ -132,16 +136,20 @@ class Commands(commands.Cog):
                     embed = discord.Embed(title="Synchronizacja konta", description="Synchronizacja konta przebiegła prawidłowo, otrzymujesz rangę Zweryfikowany.", color=config.configCheck('embed_color'))
                     embed.add_field(name="Serwer", value=records_nick[0][0])
                     embed.add_field(name="Discord", value=member)
-                    await ctx.send(embed=embed)
                     sql = "UPDATE `synchronizacja-dsc` SET used = %s, account_discord = %s WHERE code=%s"
                     val = ("tak", member.id, code)
                     cursor.execute(sql, val)
                     connection.commit()
                 else:
                     embed = discord.Embed(title="Synchronizacja konta", description="Ten klucz został już zrealizowany!", color=config.configCheck('embed_color'))
-                    await ctx.send(embed=embed)
+            if znaleziono == False:
+                embed = discord.Embed(title="Synchronizacja konta", description="Podany kod jest nieprawidłowy!", color=config.configCheck('embed_color'))
             connection.close()
             cursor.close()
+        else:
+            embed = discord.Embed(title="Synchronizacja konta", description="Aby użyć tej komendy wykonaj wygeneruj klucz w grze (/discord),\n a następnie wpisz go w tej formie: *synchronizacja <KOD>\n Aby sprawdzić status twojej synchronizacji - użyj komendy (/discord-status)", color=config.configCheck('embed_color'))
+        if not embed == None:
+            await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Commands(bot))
