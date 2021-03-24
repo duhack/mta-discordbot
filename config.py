@@ -4,8 +4,9 @@
 
 import yaml
 
-botOptions = ['token', 'prefix', 'name', 'adminrank', 'channel_member_count', 'channel_new_user', 'embed_color']
+botOptions = ['token', 'prefix', 'name', 'adminrank', 'channel_member_count', 'channel_new_user', 'embed_color', 'synchro_rank']
 mtaOptions = ['ip', 'port']
+mysqlOptions = ['host', 'user', 'database', 'password']
 
 def configCheck(data):
     with open("config.yml", "r") as ymlfile:
@@ -15,3 +16,5 @@ def configCheck(data):
             return cfg["bot"][data]
         elif data in mtaOptions:
             return cfg["mta"][data]
+        elif data in mysqlOptions:
+            return cfg["mysql"][data]
