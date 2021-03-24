@@ -5,12 +5,20 @@
 import discord
 import statusAPI
 import config
+import mysql.connector
 from statusAPI import checkSerwer
 from discord.ext import commands
 from discord.utils import get
 
 ip = config.configCheck('ip')
 port = config.configCheck('port')
+
+configMysql = {
+    'user': config.configCheck('user'), #uzytkownik bazy danych
+    'password': config.configCheck('password'), #haslo do bazy danych
+    'host': config.configCheck('host'), #ip bazy danych
+    'database': config.configCheck('database'), #baza danych
+}
 
 inviteRanks = [
     #ranga, próg
@@ -105,6 +113,35 @@ class Commands(commands.Cog):
         embed.add_field(name="Online", value=players, inline=True)
         embed.add_field(name="Adres IP", value='mtasa://'+ip+':'+str(port), inline=True)
         await ctx.send(embed=embed)
+
+    @commands.command()
+    async def synchronizacja(self, ctx, code):
+        if code is not None:
+            connection = mysql.connector.connect(**configMysql)
+            sql_select_Query = "select * from `synchronizacja-dsc` WHERE code='"+code+"'"
+            cursor = connection.cursor()
+            cursor.execute(sql_select_Query)
+            records = cursor.fetchall()
+            for row in records:
+                if str(row[2]) == "nie":
+                    cursor.execute("select `nick` from players WHERE uid='"+str(row[0])+"'")
+                    records_nick = cursor.fetchall()
+                    member = ctx.author
+                    role = get(member.guild.roles, id=config.configCheck('synchro_rank')) #ranga ktora ma nadac po pomyslnej synchronizacji
+                    await member.add_roles(role)
+                    embed = discord.Embed(title="Synchronizacja konta", description="Synchronizacja konta przebiegła prawidłowo, otrzymujesz rangę Zweryfikowany.", color=config.configCheck('embed_color'))
+                    embed.add_field(name="Serwer", value=records_nick[0][0])
+                    embed.add_field(name="Discord", value=member)
+                    await ctx.send(embed=embed)
+                    sql = "UPDATE `synchronizacja-dsc` SET used = %s, account_discord = %s WHERE code=%s"
+                    val = ("tak", member.id, code)
+                    cursor.execute(sql, val)
+                    connection.commit()
+                else:
+                    embed = discord.Embed(title="Synchronizacja konta", description="Ten klucz został już zrealizowany!", color=config.configCheck('embed_color'))
+                    await ctx.send(embed=embed)
+            connection.close()
+            cursor.close()
 
 def setup(bot):
     bot.add_cog(Commands(bot))
