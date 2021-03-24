@@ -6,6 +6,7 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
 
 ## Instalacja
 
+### Windows
 - Pobierz pliki oraz wypakuj do jednego folderu.
 - Uzupełnij plik konfiguracyjny: ```config.yml```
 - Jeżeli nie masz, to zainstaluj Pythona
@@ -21,6 +22,10 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
   ```
   
 - Uruchom plik main.py
+
+### Linux
+
+- Wkrótce
 
 ## Ważne
 Aby bot działał w pełni prawidłowo wykonaj następujące czynności:
