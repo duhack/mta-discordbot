@@ -19,6 +19,7 @@ Z powodu, że ciężko jest znaleźć bota, który posiada synchronizację z ser
   ```bash
   py -m pip install discord
   py -m pip install PyYAML
+  py -m pip install mysql-connector
   ```
   
 - Uruchom plik main.py
