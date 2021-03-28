@@ -87,7 +87,8 @@ class Commands(commands.Cog):
         embed.add_field(name="*serwer", value="Informacje o tym serwerze", inline=False)
         embed.add_field(name="*status", value="Status serwera MTA", inline=False)
         embed.add_field(name="*synchronizacja <kod>", value="Połączenie konta discord, z grą", inline=False)
-        embed.add_field(name="AUTOR:", value="duhack", inline=False)
+        embed.add_field(name="AUTOR:", value="duhack", inline=False) #tego nie usuwaj!
+        embed.add_field(name="GITHUB:", value="https://github.com/duhack/mta-discordbot", inline=False) #tego nie usuwaj!
         await ctx.send(embed=embed)
 
     @commands.command()
