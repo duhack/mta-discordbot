@@ -9,7 +9,7 @@ mtaOptions = ['ip', 'port']
 mysqlOptions = ['host', 'user', 'database', 'password']
 
 def configCheck(data):
-    with open("config.yml", "r") as ymlfile:
+    with open("config.yml", "r", encoding="utf-8") as ymlfile:
         cfg = yaml.load(ymlfile)
 
         if data in botOptions:
