@@ -1,19 +1,19 @@
 bot:
-    token: 'token' #token dostępu do bota
+    token: 'ODIzMTI2MDg2OTEyNTczNDcw.YFcR6A.O6kSuGsmBxUoE-sYLaK0AIpRDUM' #token dostępu do bota
     prefix: '*'
-    name: 'botname'
+    name: 'Titan'
     adminrank: 123 #id rangi, którą posiada administracja
-    channel_member_count: 123 #id kanału, który ma nosić nazwę z liczbą użytkowników
-    channel_new_user: 123 #id kanału, który ma nosić nazwę z najnowszym użytkownikiem
+    channel_member_count: 823133435614199808 #id kanału, który ma nosić nazwę z liczbą użytkowników
+    channel_new_user: 823133564505030667 #id kanału, który ma nosić nazwę z najnowszym użytkownikiem
     embed_color: 0xb4e1ff #tutaj wpisz kolor, jaki mają posiadać wiadomości typu embed
-    synchro_rank: 123 #ranga, którą otrzymuje połączone konto z grą
+    synchro_rank: 824213980976513024 #ranga, którą otrzymuje połączone konto z grą
 mta:
-    ip: '137.74.7.181' #ip serwera mta
-    port: 22110 #port serwera mta
+    ip: '193.70.125.98' #ip serwera mta
+    port: 22003 #port serwera mta
 mysql:
-    host: '' #host bazy danych
-    user: '' #uzytkownik do bazy danych
-    password: '' #haslo bazy danych
-    database: '' #baza danych
+    host: 'localhost' #uzytkownik bazy danych
+    user: 'duhack' #haslo do bazy danych
+    password: 'duhack' #ip bazy danych
+    database: 'discordbot' #baza danych
 
 

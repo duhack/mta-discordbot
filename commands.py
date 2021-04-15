@@ -118,6 +118,37 @@ class Commands(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
+    async def avatar(self, ctx):
+        znaleziono = False
+
+        avatar = str(ctx.author.avatar_url)
+
+        connection = mysql.connector.connect(**configMysql)
+        cursor = connection.cursor()
+
+        sql_select_Query = "select used from `synchronizacja-dsc` WHERE account_discord="+str(ctx.author.id)
+        cursor.execute(sql_select_Query)
+        records = cursor.fetchall()
+
+        for row in records:
+            if row[0] == 'tak':
+                znaleziono = True
+                sql = "UPDATE `synchronizacja-dsc` SET avatar = %s WHERE account_discord=%s"
+                val = (avatar, ctx.author.id)
+                cursor.execute(sql, val)
+                connection.commit()
+
+                embed = discord.Embed(title="Twój Avatar", description="", color=config.configCheck('embed_color'))
+                embed.set_thumbnail(url=avatar)
+                await ctx.send(embed=embed)
+
+        if znaleziono == False:
+            await ctx.send('Nie posiadasz połączonego konta!')
+
+        connection.close()
+        cursor.close()
+
+    @commands.command()
     async def synchronizacja(self, ctx, code = None):
         embed = None
         if code is not None:
@@ -138,8 +169,8 @@ class Commands(commands.Cog):
                     embed = discord.Embed(title="Synchronizacja konta", description="Synchronizacja konta przebiegła prawidłowo, otrzymujesz rangę Zweryfikowany.", color=config.configCheck('embed_color'))
                     embed.add_field(name="Serwer", value=records_nick[0][0])
                     embed.add_field(name="Discord", value=member)
-                    sql = "UPDATE `synchronizacja-dsc` SET used = %s, account_discord = %s WHERE code=%s"
-                    val = ("tak", member.id, code)
+                    sql = "UPDATE `synchronizacja-dsc` SET used = %s, account_discord = %s, avatar = %s WHERE code=%s"
+                    val = ("tak", member.id, str(member.avatar_url), code)
                     cursor.execute(sql, val)
                     connection.commit()
                 else:
